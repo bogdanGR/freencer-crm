@@ -7,6 +7,11 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        \Illuminate\Auth\Events\Registered::class => [
+            \App\Listeners\AssignDefaultRole::class,
+            ],
+    ];
     /**
      * Register any application services.
      */
